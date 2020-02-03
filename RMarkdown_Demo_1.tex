@@ -1,0 +1,198 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={RMarkdown\_Demo\_1.R},
+  pdfauthor={alyss},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\title{RMarkdown\_Demo\_1.R}
+\author{alyss}
+\date{2020-02-02}
+
+\begin{document}
+\maketitle
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#######################################################}
+\CommentTok{# Example R Markdown Script                           #}
+\CommentTok{# Adapted from:                                       #}
+  \CommentTok{# Tidy data and efficient manipulation              #}
+  \CommentTok{# Coding Club tutorial                              #  }
+  \CommentTok{# January 18th 2017                                 #}
+  \CommentTok{# Sandra Angers-Blondin (s.angers-blondin@ed.ac.uk) #}
+\CommentTok{# John Godlee                                         #}
+\CommentTok{# 24/Jan/2017                                         #}
+\CommentTok{#######################################################}
+
+\CommentTok{# Use this example R script to practice compiling an R Markdown file. }
+\CommentTok{# Try to make a well commented, easy to follow record of what is going on so that others can easily follow.}
+
+\CommentTok{# Download the datasets for this example script from:}
+ \CommentTok{# https://github.com/ourcodingclub/CC3-DataManip}
+
+\CommentTok{# Install and load the relevant packages ----------------------------------------------}
+\KeywordTok{library}\NormalTok{(dplyr) }\CommentTok{# an excellent data manipulation package}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(tidyr) }\CommentTok{# a package to format your data}
+\KeywordTok{library}\NormalTok{(pander) }\CommentTok{#to create pretty tables}
+
+\CommentTok{# Set your working directory to the folder where you have downloaded the datasets}
+\CommentTok{#setwd()}
+
+\CommentTok{# Import data -------------------------------------------------------------}
+\NormalTok{elongation <-}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"EmpetrumElongation.csv"}\NormalTok{, }\DataTypeTok{sep =} \StringTok{";"}\NormalTok{) }\CommentTok{# stem elongation measurements on crowberry}
+\CommentTok{#germination <- read.csv("Germination.csv", sep = ";") # germination of seeds subjected to toxic solutions}
+
+\CommentTok{# Tidying the data ------------------------------------------------------------}
+\CommentTok{#Putting the data into long format using gather()}
+\CommentTok{#elongation_long <- gather(elongation, Year, Length, c(X2007, X2008, X2009, X2010, X2011, X2012)) }
+  \CommentTok{#gather() works like this: data, key, value, columns to gather. Here we want the lengths (value) to be gathered by year (key). Note that you are completely making up the names of the second and third arguments, unlike most functions in R.}
+\CommentTok{#head(elongation_long)}
+
+\CommentTok{# Investigating the data ------------------------------------------------------------}
+\CommentTok{# Create a boxplot of `elongation_long' to visualise elongation for each year.}
+\CommentTok{# This set of boxplots can be added to your R Markdown document by putting the code in a code chunk}
+\CommentTok{#boxplot(Length ~ Year, }
+       \CommentTok{# data = elongation_long, }
+        \CommentTok{#xlab = "Year", }
+        \CommentTok{#ylab = "Elongation (cm)", }
+        \CommentTok{#main = "Annual growth of Empetrum hermaphroditum")}
+
+\CommentTok{# Use filter() to keep only the rows of `germination' for species `SR' }
+\CommentTok{#germinSR <- filter(germination, Species == 'SR')}
+
+\CommentTok{# Let's have a look at the distribution of germination across SR}
+\CommentTok{# This histogram can be added to your R Markdown document by simply putting the code in a code chunk}
+\CommentTok{# Try adding some plain text to your R markdown document to explain the histogram}
+\CommentTok{#hist(germinSR$Nb_seeds_germin, breaks = 8)}
+
+\CommentTok{# Use mutate() to create a new column of the germination percentage using the total number of seeds and the number of seeds that germinated}
+\CommentTok{#germin_percent <- mutate(germination, Percent = Nb_seeds_germin / Nb_seeds_tot * 100)}
+
+\CommentTok{# Use a pipe to get a table of summary statistics for each Seed type}
+\CommentTok{#germin_summ <- germin_percent %>%}
+  \CommentTok{#group_by(Species) %>%}
+  \CommentTok{#summarise("Mean germination per" = mean(Nb_seeds_germin), "Max germination per" = max(Nb_seeds_germin), "Min germination per" = min(Nb_seeds_germin))}
+
+\CommentTok{## Make a table of `germin_summ' in your R markdown document using pander(), the instructions can be found in the tutorial}
+\end{Highlighting}
+\end{Shaded}
+
+\end{document}

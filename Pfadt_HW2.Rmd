@@ -1,0 +1,187 @@
+---
+title: "Pfadt_HW2"
+author: "Alyssa Pfadt"
+date: "2/2/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+##Q. 5 Create and print a new vector 'w' that is a subset of the first 4 elements of 'v' where v<- c(8:19)
+#Create the vector 'v'
+v<-c(8:19)
+
+#Create and print the vecctor 'w'
+w<- v[1:4]
+w
+
+#Create and print a new vector, h that is a subset of the middle 5 elements of vector d, where d <- c(8:20)
+#Create the vector 'd'
+d<- c(8:20)
+
+#Create and print the vector 'h'
+h<- d[4:9]
+h
+
+#Q 7. What is the length of vector w from above?
+length(w)
+
+#Q 8. What are the 3 properties of a vector, other than its contents?.
+#All vectors have a type, specific length, and attributes
+
+#Q9. Can you predict the output of the following uses of c()? c(3,FALSE) c("a",1) c(4L,2)
+#Predictions: 
+#c(3,FALSE) will output 3 0
+#c("a",1) will output a 1
+#c(4L,2) will output 4 2
+
+c(3,FALSE)
+c("a",1)
+c(4L,2)
+
+#Q 10. What are the 4 types of common atomic vectors? What are the 2 rare types?
+#The 4 common atomic vector types are characters, numeric, integer, and logical. The 2 rare types are complex (nonreal) numbers and raw
+
+#Q 11. Why is 1=="1" true? Why is -1 < FALSE true? Why is "one< 2 false?
+#1=="1" is true because they are stored identically in memory as having the same value
+# -1< FALSE is true because numerically FALSE equates to 0
+# one<2 is false because 'one' is a string of characters, and does not have the value '1'. In Unicode, 'one' is greater than 2. 
+# Q 12. Why is the default missing value NA, a logical vector? What’s so special about logical vectors? Hint: think about c(FALSE,NA_character_) ****
+
+#Q 13. Provide the value of the last element in the result of the vector operation d * 2 from the vectors defined above.
+
+e<-d*2
+e[length(e)]
+
+#The last element is 40
+
+#Q 14. Create a vector a with a sequence of 11 elements in it ranging from 0.6 to 1.9. Create another, logical vector b that identifies which elements in a are greater than or equal to 1.1. Print your results
+
+a<-seq(from= 0.6,to=1.9,length=11)
+a
+b<-a[which(a>1.1)]
+b
+
+#Q 15. Set all elements in vector a from above to 2.0 if they are greater than or equal to 1.1.
+a[which(a>=1.1)]<-2.0
+a
+
+#Q 16. Use str() to compare the results of using list() and c() on l and j for: l <-c(list(1,2),c(3,4)) and j=list(list(1,2),c(3,4))
+
+l <-c(list(1,2),c(3,4))
+j=list(list(1,2),c(3,4))
+str(l)
+str(j)
+
+#Q 17. Show what happens when you use unlist() on l and j.
+unlist(l)
+unlist(j)
+
+mylist <- list(u = 2,v = c("abc", "def"), w = matrix(data = c(1, 2, 3, 4), nrow = 2, ncol = 2))
+mylist
+
+#Q 18. If factors are essentially integers under the hood, why do we use them, and not just use integers (e.g., 1s and 2s instead of “male”, “female”)?
+#It is much easier to keep track of factors as words than keeping track of which integers are being stored in memory. Also, in creating plots and graphs, it's much nicer to have the factor name rather than integers for readers to understand. 
+
+my.fac <- factor(c("yes", "yes", "no", "yes", "yes", "yes"))
+my.fac
+
+#Q 19. Using table(), provide the frequency of no and yes in my.fac.
+
+table(my.fac)
+
+
+#Q 20. What does this R code below do? How are f1 and f2 different from f3?
+
+f1 <- factor(letters)
+levels(f1) <-rev(levels(f1))
+f2 <- rev(factor(letters))
+f3 <- factor(letters, levels=rev(letters))
+f1
+f2
+f3
+#f1 is made up of factors consisting of the alphabet, and the levels of f1 are then assigned to be the reverse of the levels of the orginal f1 assignment. f2 is defined as a factor consisting of the reverse alphabet, but the levels are left as the regular alphabet. f3 is assigned differently, with two arguments in the factor function, so that the factors are in original order, and the levels are reverse order. 
+
+#Q 21. If is.matrix(x) is TRUE, what will is.array(x) return?
+# Also returns 'TRUE'
+x <- matrix(c(1, 2, 3, 2, 3, 4), nrow = 3,ncol = 2)
+is.matrix(x)
+is.array(x)
+
+#Q 22. Why didn’t that work? Hint: read the errors
+#There are two rows (kids) and three values given as ages, it needs to be a 1:1 matchup where each name corresponds to a value. 
+
+#BONUS. What is a tibble? Why might it be better than a data frame? Why might it be worse?
+#A tibble is similar to a dataframe but its contents are not mutable. Since the headers can be named anything, unlike regular variable names, it could be better than a dataframe under certain circumstances. Being immutable is worse under other circumstances. 
+
+#Q 23. What does as.matrix() do when applied to a data frame with columns of different types?
+#It seems to change everything to the same type (coerce). For a mix of strings and integers, it changes the integer to a string. 
+
+
+#Q 24. What if we don’t have the same variable name? Change the data frame variables names using names(d2) <- c("ages","kids"). Then, use the help documentation to merge d1 and d2. Print your results.
+
+d1 <- data.frame(names = c("Jack", "Jill", "John"), states = c("CA", "IL", "IL"))
+
+d2 <- data.frame(ages = c(10, 7, 12), names = c("Jill", "Jillian", "Jack"))
+d1
+
+d2
+
+merge(d1,d2)
+names(d2)<- c("ages","kids")
+d2
+merge(d1,d2,by= intersect(d1("names"), d2("kids"), by.d1=by, by.d2=by, all=FALSE, all.d1=all, all.d2=all, sort=TRUE))
+
+#Q 25. Can you have a data frame with 0 rows? What about 0 columns?
+#It wouldn't make sense to have a data frame without rows or without columns, since 0 rows and/or 0 columns implies there is nothing being stored. 
+
+
+#Q 26. Plot a histogram of all the Sepal.Width values in the dataset iris that are less than or equal to 3.0.
+
+#Q 27. Try using apply on ‘d’. What happens? Why?
+apply(d)
+#Returns an error. 
+
+#Q 28. What are the general elements of a function? Which elements are not required?
+# Functions consist of an argument, a body, usually return something, and must use curly brackets {}. It's not required to have an argument or return anything for a function to work. 
+
+#Q 29. How do you pass a value of an object from the local environment to the global environment (outside of a function)?
+#Having a function return a value passes that variable to the global environment.
+
+
+#Q 30. What is the name of the R function that can help you identify errors in your function?
+# Debug function(debug() )
+
+
+#Q 31. Aside from using the fucntion identified in 3. above, what is another way to troubleshoot your functions? Hint: we used this in our first function oddcount in homework 1.
+#Stepping through a function line by line. 
+
+#Q 32. What is the name of a function to write your own error messages when writing a function?.
+#stop() and stopifnot() will produce your own error messages for functions. 
+
+#Q 33. Why do you want to keep your functions short?
+#Short functions are easier to read (especially important for sharing or if anyone else has to read it), and easier to debug. It's also generally good practice to write code modularly so you know exactly which functions work and how when putting together a full program. 
+
+
+#Q 34. What are local versus global variables? Why do they matter when you write functions?
+#local variables are within a function or program, whereas global variables exist outside any function. When writing functions it's important to keep track of where different variables are defined to not overwrite anything and to not produce errors. 
+
+##Creating functions
+#Define wave_to_freq() to convert wavelength in m to frequency in Hz
+
+wave_to_freq <- function(wave) {
+#wavelength needs to be in meters
+  freq<- (299792458/wave) #speed of light in m/s
+  freq
+}
+
+#Q 35. What happens if you write the function as following in the code below and test it on wavelength = 0.02 m?
+paste("A wavelength of 0.02m has a frequency of", wave_to_freq(0.02), "Hz")
+
+#Q 36. Using the new function wave_to_freq(), what happens if you assign the function wave_to_freq() to object x and call x?
+x<-wave_to_freq(0.02)
+x
+#You can assign x to be a call to function wave_to_freq() but not the actual function. 
